@@ -1,0 +1,32 @@
+{
+    "name" : "ssh-key-manager",
+    "version" : "0.0.1",
+    "description" : "manage ssh keys in ~user/.ssh/authorized_keys",
+    "main" : "index.js",
+    "dependencies" : {
+        "brfs" : "~0.0.2",
+        "hyperglue" : "~0.1.5"
+    },
+    "browserify" : {
+        "transform": "brfs"
+    },
+    "repository" : {
+        "type" : "git",
+        "url" : "git://github.com/pkrumins/ssh-key-manager.git"
+    },
+    "homepage" : "https://github.com/pkrumins/ssh-key-manager",
+    "keywords" : [
+        "ssh",
+        "key",
+        "keys",
+        "public key",
+        "authentication",
+        "authorized_keys"
+    ],
+    "author" : {
+        "name" : "Peteris Krumins",
+        "email" : "peteris.krumins@gmail.com",
+        "url" : "http://www.catonmat.net"
+    },
+    "license" : "MIT"
+}
