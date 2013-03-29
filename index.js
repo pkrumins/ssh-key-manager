@@ -1,3 +1,6 @@
+var fs = require('fs');
+var passwd = require('passwd');
+
 module.exports = function () {
     this.listPublicKeys = function (username, cb) {
         fs.stat('/home/' + username + '/.ssh', function (err, stats) {
@@ -21,5 +24,35 @@ module.exports = function () {
                 });
             });
         });
+    }
+
+    this.addKey = function (username, key, cb) {
+        var file = '/home/' + username + '/.ssh/authorized_keys';
+        var s = fs.createWriteStream(file, { flags : 'a', mode : 0600 });
+        
+        s.on('error', cb);
+        s.on('close', function () {
+            passwd.get(username, function (user) {
+                if (!user) {
+                    cb('failed getting user info for ' + email);
+                    return;
+                }
+                fs.chown('/home/' + username + '/.ssh/authorized_keys',
+                    parseInt(user.userId),
+                    parseInt(user.groupId),
+                    function (err) {
+                        if (err) {
+                            cb('failed chowning authorized_keys for ' + username);
+                        }
+                        else {
+                            cb(null);
+                        }
+                    }
+                );
+            });
+        });
+        
+        s.write(key);
+        s.end();
     }
 }
