@@ -2,7 +2,7 @@ var fs = require('fs');
 var passwd = require('passwd');
 
 module.exports = function () {
-    this.listPublicKeys = function (username, cb) {
+    this.listKeys = function (username, cb) {
         fs.stat('/home/' + username + '/.ssh', function (err, stats) {
             if (err) {
                 cb('.ssh dir doesnt exist for ' + username);
