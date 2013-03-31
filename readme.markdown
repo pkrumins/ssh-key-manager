@@ -68,22 +68,18 @@ Methods
 
 Return a new ssh manager instance.
 
-## sshManager.listKeys(username, cb)
 ## sshManager.listKeys(username, function (err, keys) { ... })
 
 List `username`'s public keys in `~username/.ssh/authorized_keys`.
 
-## sshManager.addKey(username, key, cb)
 ## sshManager.addKey(username, key, function (err) { ... })
 
 Add a key to `username`'s public keys in `~username/.ssh/authorized_keys`.
 
-## sshManager.deleteKey(username, index, cb)
 ## sshManager.deleteKey(username, index, function (err) { ... })
 
 Delete the key at index `index` from `username`'s public keys in `~username/.ssh/authorized_keys`.
 
-## sshManager.deleteAllKeys(username, cb)
 ## sshManager.deleteAllKeys(username, function (err) { ... })
 
 Delete all `username`'s public keys in `~username/.ssh/authorized_keys`.
