@@ -5,7 +5,8 @@
     "main" : "index.js",
     "dependencies" : {
         "brfs" : "~0.0.2",
-        "hyperglue" : "~0.1.5"
+        "hyperglue" : "~0.1.5",
+        "passwd" :  "~0.0.11"
     },
     "browserify" : {
         "transform": "brfs"
