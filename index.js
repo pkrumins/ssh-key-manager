@@ -4,11 +4,7 @@ var path = require('path');
 
 module.exports = new function () {
     this.sshPath = function(username, cb) {
-        passwd.get(username, function (err, user) {
-            if (err) {
-                cb(err);
-                return;
-            }
+        passwd.get(username, function (user) {
             if (!user || !user.homedir) {
                 cb('failed getting homedir for ' + username);
                 return;
